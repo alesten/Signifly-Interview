@@ -41,11 +41,6 @@ namespace Signifly_Interview.Controllers
             return RedirectToAction("ShowTeam", "Home", new { id });
         }
 
-        public ActionResult UpdateTeam(int id)
-        {
-            return View();
-        }
-
         public ActionResult ShowTeam(int id)
         {
             var team = TeamStorage.GetTeam(id);
