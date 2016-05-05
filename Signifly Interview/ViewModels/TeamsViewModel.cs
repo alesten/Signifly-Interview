@@ -12,6 +12,7 @@ namespace Signifly_Interview.ViewModels
     public class AddTeamViewModel
     {
         public string Name { get; set; }
+        public List<AddTeamSkill> Skills { get; set; }
 
         public Team ToTeam()
         {
@@ -20,6 +21,13 @@ namespace Signifly_Interview.ViewModels
                 Name = Name
             };
         }
+    }
+
+    public class AddTeamSkill
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Amt { get; set; }
     }
 
     public class ShowTeamViewModel

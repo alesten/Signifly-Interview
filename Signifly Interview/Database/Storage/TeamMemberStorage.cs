@@ -73,5 +73,27 @@ namespace Signifly_Interview.Database.Storage
         }
 
         #endregion
+
+        #region Add
+
+        public void AddMemberToTeamFromSkill(int teamId, int skillId, int amt)
+        {
+            using (var con = new SqlConnection(ConnectionString))
+            {
+                using (var cmd = new SqlCommand("spAddMembers", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("Team_Id", SqlDbType.Int).Value = teamId;
+                    cmd.Parameters.Add("TeamMemberSkill_Id", SqlDbType.Int).Value = skillId;
+                    cmd.Parameters.Add("Amt", SqlDbType.Int).Value = amt;
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        #endregion
     }
 }

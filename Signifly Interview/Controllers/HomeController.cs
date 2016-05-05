@@ -20,6 +20,10 @@ namespace Signifly_Interview.Controllers
         public ActionResult Teams()
         {
             var viewModel = new TeamsViewModel { Teams = TeamStorage.GetTeams() };
+            viewModel.AddTeamViewModel = new AddTeamViewModel();
+            viewModel.AddTeamViewModel.Skills = TeamStorage.GetAvailableSkills().Select(
+                s => new AddTeamSkill {Id = s.Id, Amt = 0, Name = s.Name}
+            ).ToList();
 
             return View(viewModel);
         }
@@ -27,9 +31,14 @@ namespace Signifly_Interview.Controllers
         [HttpPost]
         public ActionResult AddTeam(TeamsViewModel viewModel)
         {
-            TeamStorage.AddTeam(viewModel.AddTeamViewModel.ToTeam());
+            var id = TeamStorage.AddTeam(viewModel.AddTeamViewModel.ToTeam());
 
-            return RedirectToAction("Teams");
+            foreach (var skill in viewModel.AddTeamViewModel.Skills)
+            {
+                TeamMemberStorage.AddMemberToTeamFromSkill(id, skill.Id, skill.Amt);   
+            }
+
+            return RedirectToAction("ShowTeam", "Home", new { id });
         }
 
         public ActionResult UpdateTeam(int id)

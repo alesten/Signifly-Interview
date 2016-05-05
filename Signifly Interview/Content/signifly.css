@@ -45,7 +45,16 @@
     font-size: 20px;
 }
 
+
 .TeamMemberSingle span {
     color: #3c4654;
     font-size: 15px;
+}
+
+.navbar-brand img {
+    display: block;
+    height: 80px;
+    width: 150px;
+    margin-top: -30px;
+    margin-left: -20px;
 }

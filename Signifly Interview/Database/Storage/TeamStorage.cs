@@ -67,21 +67,51 @@ namespace Signifly_Interview.Database.Storage
                                 team = TeamMapper.Map(reader);
                                 team.TeamMembers = new List<TeamMember>();
                             }
-
-                            team.TeamMembers.Add(TeamMemberMapper.Map(reader));
+                            try
+                            {
+                                team.TeamMembers.Add(TeamMemberMapper.Map(reader));
+                            }
+                            catch
+                            {
+                                // ignored
+                            }
                         }
                         return team;
                     }
-
                 }
             }
+        }
+
+        public List<TeamMemberSkill> GetAvailableSkills()
+        {
+            var skills = new List<TeamMemberSkill>();
+
+            using (var con = new SqlConnection(ConnectionString))
+            {
+                using (var cmd = new SqlCommand("spGetSkills", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    con.Open();
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            skills.Add(TeamMemberMapper.MapSkill(reader));
+                        }
+                    }
+                }
+            }
+
+            return skills;
         }
 
         #endregion
 
         #region Add
 
-        public void AddTeam(Team team)
+        public int AddTeam(Team team)
         {
             using (var con = new SqlConnection(ConnectionString))
             {
@@ -93,9 +123,16 @@ namespace Signifly_Interview.Database.Storage
 
                     con.Open();
 
-                    cmd.ExecuteNonQuery();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return (int) reader["Team_Id"];
+                        }
+                    }
                 }
             }
+            return -1;
         }
 
         #endregion
