@@ -1,0 +1,30 @@
+﻿@model Signifly_Interview.ViewModels.TeamMemberViewModel
+
+@{
+    ViewBag.Title = "Team Members";
+    ViewBag.Site = "TeamMembers";
+}
+
+<h2>Team Members</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var teamMember in Model.TeamMembers)
+        {
+            <tr>
+                <td>@teamMember.Id</td>
+                <td>@teamMember.Name</td>
+                <td><a href="mailto:@teamMember.Email">@teamMember.Email</a></td>
+                <td>@teamMember.Mobile</td>
+            </tr>
+        }
+    </tbody>
+</table>

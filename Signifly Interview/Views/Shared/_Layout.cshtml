@@ -19,7 +19,8 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li @CheckLink("Teams")>@Html.ActionLink("Teams", "Teams", "Home", new {area = ""}, new {@class = "navbar-default"})</li>
+                <li @CheckLink("Teams")>@Html.ActionLink("Teams", "Teams", "Home", new { area = "" }, new { @class = "navbar-default" })</li>
+                <li @CheckLink("TeamMembers")>@Html.ActionLink("Team Members", "TeamMember", "Home", new {area = ""}, new {@class = "navbar-default"})</li>
             </ul>
         </div>
     </div>

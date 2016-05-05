@@ -15,6 +15,8 @@ namespace Signifly_Interview.Controllers
             return View();
         }
 
+        #region Team
+
         public ActionResult Teams()
         {
             var viewModel = new TeamsViewModel { Teams = TeamStorage.GetTeams() };
@@ -29,5 +31,18 @@ namespace Signifly_Interview.Controllers
 
             return RedirectToAction("Teams");
         }
+
+        #endregion
+
+        #region TeamMember
+
+        public ActionResult TeamMember()
+        {
+            var viewModel = new TeamMemberViewModel {TeamMembers = TeamMemberStorage.GetTeamMembers()};
+
+            return View(viewModel);
+        }
+
+        #endregion
     }
 }

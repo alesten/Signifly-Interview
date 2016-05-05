@@ -3,7 +3,8 @@ using Signifly_Interview.Models;
 
 namespace Signifly_Interview.ViewModels
 {
-    public class IndexViewModel
+    public class TeamMemberViewModel
     {
+        public List<TeamMember> TeamMembers { get; set; }
     }
 }
