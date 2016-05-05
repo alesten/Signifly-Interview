@@ -1,37 +1,51 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Signifly Team Manager</title>
-    <link href="~/Content/lib/site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/lib/site.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Signifly Team Manager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Signifly Team Manager", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li @CheckLink("Teams")>@Html.ActionLink("Teams", "Teams", "Home", new {area = ""}, new {@class = "navbar-default"})</li>
+            </ul>
         </div>
     </div>
+</div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>Footer</p>
-        </footer>
-    </div>
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>Footer</p>
+    </footer>
+</div>
 
-    <script src="~/Content/lib/third-party.js"></script>
+<script src="~/Content/lib/third-party.js"></script>
+@RenderSection("Scripts", false)
 </body>
 </html>
+
+@helper CheckLink(string site)
+{
+    if (site == null || ViewBag.Site == null)
+    {
+        return;
+    }
+    if (ViewBag.Site.Equals(site))
+    {
+        <text>class="active"</text>
+    }
+}

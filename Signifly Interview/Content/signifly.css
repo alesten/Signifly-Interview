@@ -1,5 +1,5 @@
 ﻿.body-content {
-    margin-top: 40px;
+    margin-top: 51px;
 }
 
 .navbar {
@@ -9,4 +9,17 @@
 
 .navbar-inverse .navbar-brand {
     color: #ffffff;
+}
+
+.navbar-default,
+.navbar-default:visited {
+    background-color: #df1927;
+    color: #ffffff !important;
+}
+
+.navbar-default:hover, 
+.navbar-default:active, 
+.navbar-inverse .navbar-nav>.active>a {
+    background-color: #af0015 !important;}.right {
+    float: right;
 }

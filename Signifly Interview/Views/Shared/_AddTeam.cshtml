@@ -1,0 +1,17 @@
+﻿@model Signifly_Interview.ViewModels.TeamsViewModel
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddTeam"))
+{
+    <div class="form-group">
+        <label class="label label-default">Name</label>
+        @Html.TextBoxFor(m => m.AddTeamViewModel.Name, new { @class="form-control"} )
+    </div>
+
+    <div class="right">
+        <button class="btn btn-default">Send</button>
+    </div>
+}

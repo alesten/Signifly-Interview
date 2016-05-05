@@ -1,0 +1,62 @@
+﻿@model Signifly_Interview.ViewModels.TeamsViewModel
+
+@{
+    ViewBag.Title = "Teams";
+    ViewBag.Site = "Teams";
+}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var team in Model.Teams)
+    {
+        <tr>
+            <td>@team.Id</td>
+            <td>@team.Name</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+    Add Team
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add Team</h4>
+        </div>
+        @using (Html.BeginForm("AddTeam", "Home", FormMethod.Post))
+        {
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="label label-default">Name</label>
+                    @Html.TextBoxFor(m => m.AddTeamViewModel.Name, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="right">
+                    <input type="submit" class="btn btn-default" data-loading-text="Adding..."/>
+                </div>
+            </div>      
+        }
+    </div>
+</div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus();
+        })
+    </script>
+}
