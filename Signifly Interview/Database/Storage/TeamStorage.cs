@@ -44,6 +44,39 @@ namespace Signifly_Interview.Database.Storage
             return teams;
         }
 
+        public Team GetTeam(int id)
+        {
+            Team team = null;
+
+            using (var con = new SqlConnection(ConnectionString))
+            {
+                using (var cmd = new SqlCommand("spGetTeamWithMembers", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("Team_Id", SqlDbType.Int).Value = id;
+
+                    con.Open();
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (team == null)
+                            {
+                                team = TeamMapper.Map(reader);
+                                team.TeamMembers = new List<TeamMember>();
+                            }
+
+                            team.TeamMembers.Add(TeamMemberMapper.Map(reader));
+                        }
+                        return team;
+                    }
+
+                }
+            }
+        }
+
         #endregion
 
         #region Add

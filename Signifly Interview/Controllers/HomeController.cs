@@ -32,6 +32,23 @@ namespace Signifly_Interview.Controllers
             return RedirectToAction("Teams");
         }
 
+        public ActionResult UpdateTeam(int id)
+        {
+            return View();
+        }
+
+        public ActionResult ShowTeam(int id)
+        {
+            var team = TeamStorage.GetTeam(id);
+            if (team == null)
+            {
+                return HttpNotFound("No team found");
+            }
+            var viewModel = new ShowTeamViewModel {Team = team};
+
+            return View(viewModel);
+        }
+
         #endregion
 
         #region TeamMember

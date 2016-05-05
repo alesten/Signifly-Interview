@@ -7,28 +7,4 @@
 
 <h2>Team Members</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Mobile</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var teamMember in Model.TeamMembers)
-        {
-            var imageSrc = $"../../Content/Images/TeamMember_{@teamMember.Id}.jpg";
-            
-            <tr>
-                <td>@teamMember.Id</td>
-                <td>@teamMember.Name</td>
-                <td><a href="mailto:@teamMember.Email">@teamMember.Email</a></td>
-                <td>@teamMember.Mobile</td>
-                <td><img src="@imageSrc"/></td>
-            </tr>
-        }
-    </tbody>
-</table>
+@Html.Partial("TeamMembers/_TeamMembers", Model.TeamMembers)

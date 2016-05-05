@@ -20,6 +20,32 @@
 .navbar-default:hover, 
 .navbar-default:active, 
 .navbar-inverse .navbar-nav>.active>a {
-    background-color: #af0015 !important;}.right {
+    background-color: #af0015 !important;
+}
+
+.right {
     float: right;
+}
+
+.TeamMemberGrid {
+    margin-bottom: 50px;
+    padding: 0;
+}
+
+.TeamMemberSingle {
+    width: 320px; 
+    background-color: #1e2228;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.TeamMemberSingle p {
+    font-size: 20px;
+}
+
+.TeamMemberSingle span {
+    color: #3c4654;
+    font-size: 15px;
 }

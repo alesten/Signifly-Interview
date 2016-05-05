@@ -1,0 +1,24 @@
+﻿@model Signifly_Interview.Models.TeamMember
+
+@{
+    Layout = null;
+    var imageSrc = $"../../Content/Images/TeamMember_{Model.Id}.jpg";
+    string skills = Model.Skills.Aggregate("", (current, skill) => current + " & " + skill.Name);
+    if (skills.Length > 0)
+    {
+        skills = skills.Substring(3);
+    }
+    else
+    {
+        skills = "No skills asigned";
+    }
+}
+
+
+<div>
+    <img src="@imageSrc"/>
+    <div class="TeamMemberSingle">
+        <p>@Model.Name</p>
+        <span>@skills</span>
+    </div>    
+</div>

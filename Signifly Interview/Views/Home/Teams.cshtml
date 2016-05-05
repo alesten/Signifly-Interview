@@ -15,7 +15,7 @@
     @foreach (var team in Model.Teams)
     {
         <tr>
-            <td>@team.Name</td>
+            <td>@Html.ActionLink(team.Name, "ShowTeam", new {team.Id})</td>
         </tr>
     }
     </tbody>

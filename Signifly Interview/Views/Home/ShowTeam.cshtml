@@ -1,0 +1,13 @@
+﻿@model Signifly_Interview.ViewModels.ShowTeamViewModel
+
+@{
+    ViewBag.Title = "Show Team";
+}
+
+<h2>Show Team</h2>
+
+<h4>@Model.Team.Name</h4>
+
+<h3>Team Members</h3>
+
+@Html.Partial("TeamMembers/_TeamMembers", Model.Team.TeamMembers)

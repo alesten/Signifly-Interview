@@ -45,6 +45,33 @@ namespace Signifly_Interview.Database.Storage
             return teamMembers;
         }
 
+        public List<TeamMemberSkill> GetSkills(int memberId)
+        {
+            var skills = new List<TeamMemberSkill>();
+
+            using (var con = new SqlConnection(ConnectionString))
+            {
+                using (var cmd = new SqlCommand("spGetTeamMemberSkills", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("TeamMember_Id", SqlDbType.Int).Value = memberId;
+
+                    con.Open();
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            skills.Add(TeamMemberMapper.MapSkill(reader));
+                        }
+                    }
+                }
+            }
+
+            return skills;
+        }
+
         #endregion
     }
 }

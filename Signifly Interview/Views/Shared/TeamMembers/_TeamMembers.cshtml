@@ -1,0 +1,12 @@
+﻿@model List<Signifly_Interview.Models.TeamMember>
+
+@{
+    Layout = null;
+}
+
+@foreach (var member in Model)
+{
+    <div class="col-lg-4 col-md-6 col-sm-12 TeamMemberGrid" >
+        @Html.Partial("TeamMembers/_TeamMember", member)
+    </div>
+}

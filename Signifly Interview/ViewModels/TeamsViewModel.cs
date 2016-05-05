@@ -21,4 +21,9 @@ namespace Signifly_Interview.ViewModels
             };
         }
     }
+
+    public class ShowTeamViewModel
+    {
+        public Team Team { get; set; }
+    }
 }
