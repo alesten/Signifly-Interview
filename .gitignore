@@ -250,5 +250,7 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
-/Signifly Interview/Signifly Interview/bower_components
-/Signifly Interview/Signifly Interview/Content/lib
+
+# Front end libs
+bower_components/
+Content/lib/

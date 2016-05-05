@@ -1,0 +1,12 @@
+﻿.body-content {
+    margin-top: 40px;
+}
+
+.navbar {
+    background-color: #df1927;
+    border-color: #df1927;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+}
