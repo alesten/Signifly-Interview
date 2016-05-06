@@ -16,7 +16,7 @@ namespace Signifly_Interview
             routes.MapRoute(
                 name: "Default",
                 url: "{action}/{id}",
-                defaults: new { action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
