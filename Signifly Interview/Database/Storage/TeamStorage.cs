@@ -35,13 +35,43 @@ namespace Signifly_Interview.Database.Storage
                     {
                         while (reader.Read())
                         {
-                            teams.Add(TeamMapper.Map(reader));
+                            var team = TeamMapper.Map(reader);
+
+                            team.Skills = GetSkillOverviewForTeam(team.Id);
+
+                            teams.Add(team);
                         }
                     }
                 }
             }
 
             return teams;
+        }
+
+        private List<SkillAmt> GetSkillOverviewForTeam(int id)
+        {
+            var skills = new List<SkillAmt>();
+
+            using (var con = new SqlConnection(ConnectionString))
+            {
+                using (var cmd = new SqlCommand("spGetSkillsForTeam", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("Team_Id", SqlDbType.Int).Value = id;
+
+                    con.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            skills.Add(TeamMapper.MapSkillOverview(reader));
+                        }
+                    }
+                }
+            }
+
+            return skills;
         }
 
         public Team GetTeam(int id)
@@ -120,6 +150,7 @@ namespace Signifly_Interview.Database.Storage
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("TeamName", SqlDbType.NVarChar).Value = team.Name;
+                    cmd.Parameters.Add("TeamDescription", SqlDbType.NVarChar).Value = team.Description.Replace("\r\n", "<br>");
 
                     con.Open();
 

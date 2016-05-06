@@ -7,20 +7,13 @@ namespace Signifly_Interview.ViewModels
     {
         public List<Team> Teams { get; set; }
         public AddTeamViewModel AddTeamViewModel { get; set; }
+
     }
 
     public class AddTeamViewModel
     {
-        public string Name { get; set; }
+        public Team Team { get; set; }
         public List<AddTeamSkill> Skills { get; set; }
-
-        public Team ToTeam()
-        {
-            return new Team
-            {
-                Name = Name
-            };
-        }
     }
 
     public class AddTeamSkill

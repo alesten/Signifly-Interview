@@ -31,7 +31,7 @@ namespace Signifly_Interview.Controllers
         [HttpPost]
         public ActionResult AddTeam(TeamsViewModel viewModel)
         {
-            var id = TeamStorage.AddTeam(viewModel.AddTeamViewModel.ToTeam());
+            var id = TeamStorage.AddTeam(viewModel.AddTeamViewModel.Team);
 
             foreach (var skill in viewModel.AddTeamViewModel.Skills)
             {

@@ -71,21 +71,69 @@
 
 .btn-signifly{
     background-color: #fff;
-    border: 2px solid #E2121C;
-    color: #E2121C;
+    border: 2px solid #df1927;
+    color: #df1927;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
 }
 
 .btn-signifly:hover{
-   background-color: #E2121C;
+   background-color: #df1927;
    color: #fff;
 }
 a {
-    color: #E2121C;
+    color: #df1927;
     text-decoration: none;
 }
 
 a:hover {
-    color: #E2121C;
+    color: #df1927;
     text-decoration: underline;
 }
     
+.TeamSingle {
+    height: 250px;
+    border: #1e2228 2px solid;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.TeamSingle .header h2 {
+    margin: 0;
+    text-align: center;
+    color: #fff;
+}
+
+.TeamSingle .header {
+    background-color: #df1927;
+    padding: 2px 0 2px 0;
+}
+
+.TeamSingle .body {
+    margin-top: 15px;
+}
+
+.TeamSingle .body table {
+     margin: 0 auto;
+}
+
+.TeamSingle .body table td {
+    width: 40%;
+}
+
+.label-signifly{
+  background-color: #df1927;
+}
+
+textarea {
+    -moz-resize: vertical;
+    -ms-resize: vertical;
+    -o-resize: vertical;
+    resize: vertical;
+}
+
+.clearfix {
+    clear: both;
+}

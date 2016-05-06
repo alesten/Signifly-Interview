@@ -11,9 +11,19 @@ namespace Signifly_Interview.Database.Mapper
 
             team.Id = (int)reader["Team_Id"];
             team.Name = reader["TeamName"].ToString();
-
+            team.Description = reader["TeamDescription"].ToString();
 
             return team;
+        }
+
+        public static SkillAmt MapSkillOverview(SqlDataReader reader)
+        {
+            var skill = new SkillAmt();
+
+            skill.Name = reader["TeamMemberSkillName"].ToString();
+            skill.Amt = (int) reader["Amt"];
+
+            return skill;
         }
     }
 }

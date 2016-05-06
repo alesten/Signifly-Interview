@@ -10,6 +10,14 @@ namespace Signifly_Interview.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public List<TeamMember> TeamMembers { get; set; }
+        public List<SkillAmt> Skills { get; set; }
+    }
+
+    public class SkillAmt
+    {
+        public string Name { get; set; }
+        public int Amt { get; set; }
     }
 }

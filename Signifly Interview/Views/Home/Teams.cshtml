@@ -4,24 +4,38 @@
     ViewBag.Title = "Teams";
     ViewBag.Site = "Teams";
 }
-
-<table class="table">
-    <thead>
-    <tr>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
+<div style="margin-top: 20px;">
     @foreach (var team in Model.Teams)
     {
-        <tr>
-            <td>@Html.ActionLink(team.Name, "ShowTeam", new {team.Id})</td>
-        </tr>
+        <div class="col-lg-4" onclick="location.href = '@Url.Action("ShowTeam", new {team.Id})'">
+            <div class="TeamSingle">
+                <div class="header">
+                    <h2>@team.Name</h2>
+                </div>
+                <div class="body">
+                    @if (team.Skills.Count > 0)
+                    {
+                        <table>
+                            <tr>
+                                <th>Name</th>
+                                <th>Amount</th>
+                            </tr>
+                            @foreach (var skill in team.Skills)
+                            {
+                                <tr>
+                                    <td>@skill.Name</td>
+                                    <td>@skill.Amt</td>
+                                </tr>
+                            }
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
     }
-    </tbody>
-</table>
+</div>
 
-<div type="button" class="btn btn-signifly" data-toggle="modal" data-target="#myModal">
+<div type="button" style="clear: both; float: right;" class="btn btn-signifly" data-toggle="modal" data-target="#myModal">
     Add Team
 </div>
 
@@ -36,8 +50,13 @@
         {
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="label label-default">Name</label>
-                    @Html.TextBoxFor(m => m.AddTeamViewModel.Name, new {@class = "form-control"})
+                    <label class="label label-signifly">Name *</label>
+                    @Html.TextBoxFor(m => m.AddTeamViewModel.Team.Name, new {@class = "form-control"})
+                </div>
+
+                <div class="form-group">
+                    <label class="label label-signifly">Description</label>
+                    @Html.TextAreaFor(m => m.AddTeamViewModel.Team.Description, new { @class = "form-control" })
                 </div>
 
                 @for (int i = 0; i < Model.AddTeamViewModel.Skills.Count; i++)
@@ -47,7 +66,7 @@
                     @Html.HiddenFor(m => m.AddTeamViewModel.Skills[i].Id)
 
                     <div class="form-group">
-                        <label class="label label-default">@skill.Name</label>
+                        <label class="label label-signifly">@skill.Name</label>
                         @Html.TextBoxFor(m => m.AddTeamViewModel.Skills[i].Amt, new {@type = "number", @class = "form-control"})
                     </div>
                 }

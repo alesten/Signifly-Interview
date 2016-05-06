@@ -6,6 +6,11 @@
 
 <h2>@Model.Team.Name</h2>
 
+<h3>Description</h3>
+<p>@Html.Raw(Model.Team.Description)</p>
+
 <h3>Team Members</h3>
 
 @Html.Partial("TeamMembers/_TeamMembers", Model.Team.TeamMembers)
+
+<div class="btn btn-signifly right clearfix" onclick="alert('Request system not implemented in this demo');">Reqest</div>
