@@ -7,7 +7,14 @@
 <h2>@Model.Team.Name</h2>
 
 <h3>Description</h3>
-<p>@Html.Raw(Model.Team.Description)</p>
+@if (string.IsNullOrWhiteSpace(Model.Team.Description))
+{
+    <p>No description found!</p>
+}
+else
+{
+    <p>@Html.Raw(Model.Team.Description)</p>
+}
 
 <h3>Team Members</h3>
 

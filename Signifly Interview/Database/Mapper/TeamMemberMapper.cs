@@ -16,7 +16,6 @@ namespace Signifly_Interview.Database.Mapper
             teamMember.Email = reader["TeamMemberEmail"].ToString();
             teamMember.Mobile = reader["TeamMemberMobile"].ToString();
             teamMember.Description = reader["TeamMemberDescription"].ToString();
-            teamMember.Position = reader["TeamMemberPosition"].ToString();
 
             return teamMember;
         }
