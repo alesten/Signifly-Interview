@@ -21,7 +21,7 @@
     </tbody>
 </table>
 
-<div type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+<div type="button" class="btn btn-signifly" data-toggle="modal" data-target="#myModal">
     Add Team
 </div>
 
@@ -54,19 +54,10 @@
             </div>
             <div class="modal-footer">
                 <div class="right">
-                    <input type="submit" class="btn btn-default"/>
+                    <input type="submit" class="btn btn-signifly" value="Add"/>
                 </div>
             </div>      
         }
     </div>
 </div>
 </div>
-
-@section Scripts
-{
-    <script>
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').focus();
-        })
-    </script>
-}

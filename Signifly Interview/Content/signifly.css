@@ -37,8 +37,10 @@
     background-color: #1e2228;
     color: #ffffff;
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 10px 10px 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .TeamMemberSingle p {
@@ -58,3 +60,32 @@
     margin-top: -30px;
     margin-left: -20px;
 }
+
+.pointer {
+    cursor: pointer;
+}
+
+.member-contact {
+    line-height: 2em;
+}
+
+.btn-signifly{
+    background-color: #fff;
+    border: 2px solid #E2121C;
+    color: #E2121C;
+}
+
+.btn-signifly:hover{
+   background-color: #E2121C;
+   color: #fff;
+}
+a {
+    color: #E2121C;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #E2121C;
+    text-decoration: underline;
+}
+    

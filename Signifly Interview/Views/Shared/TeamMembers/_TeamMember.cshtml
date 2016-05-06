@@ -15,10 +15,43 @@
 }
 
 
-<div>
+<div class="pointer" data-toggle="modal" data-target="#memberModel_@Model.Id">
     <img src="@imageSrc"/>
     <div class="TeamMemberSingle">
         <p>@Model.Name</p>
         <span>@skills</span>
     </div>    
+</div>
+
+
+<div class="modal fade" id="memberModel_@Model.Id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">@Model.Name</h4>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="@imageSrc"/>
+                </div>
+                <br/>
+                <div>
+                    @Html.Raw(Model.Description)
+                </div>
+                <hr/>
+                <div class="member-contact">
+                    <img src="http://signifly.com/public/img/pages/mail-icon.png" width="24" height="24" />@Model.Email
+                    <br />
+                    <img src="http://signifly.com/public/img/pages/phone-icon.png" width="24" height="24" />@Model.Mobile
+                </div>
+                <hr/>
+                <h4>Skills</h4>
+                <p><i>@skills</i></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-signifly" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
